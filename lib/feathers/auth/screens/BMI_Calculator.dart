@@ -1,6 +1,6 @@
-import 'dart:math';
 
 import 'package:bmi_calculator/core/utils/AppStrings.dart';
+import 'package:bmi_calculator/core/utils/BMI_logic.dart';
 import 'package:bmi_calculator/feathers/auth/screens/Result.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class BMI extends StatefulWidget {
 
 class _BMIState extends State<BMI> {
   bool ismale = true;
-  double hight = 30;
+  int  hight = 100;
   int wieght = 20;
   int age = 15;
 
@@ -140,14 +140,14 @@ class _BMIState extends State<BMI> {
                     ),
                   ),
                   Slider(
-                      value: hight,
-                      max: 200,
-                      min: 0,
+                      value: hight.toDouble(),
+                      max: 220.0,
+                      min: 100.0,
                       label: hight.toStringAsFixed(0),
                       divisions: 20,
-                      onChanged: (value) {
+                      onChanged: (double value) {
                         setState(() {
-                          hight = value;
+                          hight = value.round();
                         });
                       }),
                 ],
@@ -183,7 +183,7 @@ class _BMIState extends State<BMI> {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        Text('${wieght}',
+                        Text('${wieght.toString()}',
                             style: GoogleFonts.roboto(
                               color: AppColors.text,
                               fontSize: 24,
@@ -241,7 +241,7 @@ class _BMIState extends State<BMI> {
                             fontWeight: FontWeight.w700,
                           ),
                         ),
-                        Text('${age}',
+                        Text('${age.toString()}',
                             style: GoogleFonts.roboto(
                               color: AppColors.text,
                               fontSize: 24,
@@ -288,11 +288,12 @@ class _BMIState extends State<BMI> {
               height: 80,
               child: ElevatedButton(
                 onPressed: () {
-                  double BMI = wieght / pow(hight / 100, 2);
+                  BmiLogic calc =
+                  BmiLogic(height: hight, weight: wieght);
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (BuildContext context) {
-                      return result(BMI:  double.parse(BMI.toString().split('.')[1]));
+                      return result(BMI: calc.calculateBMI(), res: calc.getResult());
                     }),
                   );
                 },

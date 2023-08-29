@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class result extends StatelessWidget {
-  final double BMI;
-   result({required this.BMI});
+  final String BMI;
+  final String res;
+   result({required this.BMI,required this.res});
 
   @override
   Widget build(BuildContext context) {
@@ -45,22 +46,13 @@ class result extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  // if(BMI<18.5)
-                  //   Text('Under Wight',
-                  //     style: GoogleFonts.roboto(
-                  //       color: AppColors.text2,
-                  //       fontSize: 35,
-                  //       fontWeight: FontWeight.w700,
-                  //     ),
-                  // ),
-                  // else if(BMI<18.5&& BMI>24.9)
-                  //   Text('Normal Wight',
-                  //  style: GoogleFonts.roboto(
-                  //  color: AppColors.text2,
-                  //   fontSize: 35,
-                  //     fontWeight: FontWeight.w700,
-                  //     ),
-
+                  Center(
+                    child: Text('${res}',style: GoogleFonts.roboto(
+                      color: AppColors.text2,
+                      fontSize: 35,
+                      fontWeight: FontWeight.w700,
+                    ),),
+                  ),
 
 
 
@@ -69,7 +61,7 @@ class result extends StatelessWidget {
                     Center(
                       child: Text('${BMI}',style: GoogleFonts.roboto(
                         color: AppColors.text,
-                        fontSize: 60,
+                        fontSize: 70,
                         fontWeight: FontWeight.w700,
                       ),),
                     )
