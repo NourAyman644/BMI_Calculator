@@ -1,4 +1,5 @@
-import 'package:bmi_calculator/feathers/auth/screens/BMI_Calculator.dart';
+// import 'package:bmi_calculator/feathers/auth/screens/BMI_Calculator.dart';
+import 'package:bmi_calculator/feathers/auth/screens/Save_In_Shared_Preference.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -7,9 +8,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: BMI(),
+      home: SaveInSharedPreferences(),
     );
   }
 }
